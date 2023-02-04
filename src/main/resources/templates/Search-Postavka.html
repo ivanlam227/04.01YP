@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>пр2</title>
+<body style="background: black">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+
+<div th:insert="Blocks/Header"></div>
+<h1 style="color: white">Поиск клиента</h1>
+
+<form method="post" th:action="${'/Search/Postavka'}">
+  <input style="background: #ffc107" type="text" name="nomerP">
+  <button style="background: #ffc107" type="submit">Поиск</button>
+</form>
+<div th:each="el : ${result}">
+  <h3 style="color: white"><b> № поставки -  </b> <span th:text="${el.nomerP()}" /></h3>
+  <p style="color: white"/><b>Наименование авто -   </b> <span th:text="${el.nameAvto()}"/></p>
+  <p style="color: white"/><b> Количество -  </b> <span th:text="${el.col()}"/></p>
+
+</div>
+</body>
+</html>

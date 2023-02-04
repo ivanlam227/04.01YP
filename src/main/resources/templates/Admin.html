@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body style="background:black">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<div th:insert="Blocks/Header"></div>
+
+<a href="/registration" >Добавить пользователь</a>
+
+<div class="container">
+  <table class="table">
+    <tr>
+      <th align="center" style="color: #ffc107">Логин</th>
+      <th style="color: #ffc107" align="center">Роли</th>
+    </tr>
+    <tr th:each="el : ${users}">
+      <td style="color: #ffc107" th:text="${el.username}"></td>
+      <td>
+        <div th:each="role : ${el.roles}">
+          <p style="color: #ffc107" th:text="${role}"></p>
+        </div>
+      </td>
+      <td>
+        <a class="btn btn-primary"
+           th:href="'/admin/'+${el.id}">Подробнее...</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

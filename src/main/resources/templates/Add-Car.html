@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8"   >
+    <title>пр2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <div th:insert="Blocks/Header"></div>
+    <h1 style="color: white">Добавление  авто</h1>
+<body style="background: black">
+
+</head>
+
+<form th:action= "${'/Add/Car'}" method="post" th:object = "${car}"  >
+        <input style="background: #ffc107; margin-bottom: 15px" type="text" th:fields="*{marks}" name="marks" placeholder="Модель авто"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('marks')}" th:errors="*{marks}"></div><br>
+    <input style="background: #ffc107; margin-bottom: 15px"  type="number" th:fields="*{sale}"  name="sale" maxlength="17" placeholder="Цена"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('sale')}" th:errors="*{sale}"></div><br>
+    <input style="background: #ffc107;  margin-bottom: 15px" type="number" th:fields="*{numberengen}" name="numberengen" placeholder="номер двигателя"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('numberengen')}" th:errors="*{numberengen}"></div><br>
+    <input  placeholder="Год выпуска" style="background: #ffc107; margin-bottom: 15px " name="year"  type="date" ><br>
+    <div style="color: white" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div><br>
+
+    <input style="background: #ffc107; margin-bottom: 15px"  th:fields="*{color}" type="text" name="color" placeholder="Цвет авто"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></div><br>
+    <select name="compl">
+        <div th:each="element : ${complect}">
+            <option th:text="${element.compl}"></option>
+
+        </div>
+    </select>
+    <button style="background: #ffc107; margin-bottom: 15px" type="submit"> Добавить автомобиль</button>
+</form>
+</body>
+</html>

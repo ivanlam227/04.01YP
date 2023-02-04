@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body style="background:black">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<div th:insert="Blocks/Header"></div>
+<form th:action = "@{/admin/{id}/update(id=${user.id})}" method="post" th:object="${user}">
+  <div>
+    <input  type="text" th:value="${user.username}" name="username">
+  </div>
+  <div th:each="role : ${role}">
+    <input type="checkbox" th:id="${role}"
+          th:name="${'roles[]'}" th:value="${role}"
+           th:checked="${#lists.contains(user.roles,role)}">
+
+    <label style="color: #FFFFFF" th:text="${role}"></label>
+  </div>
+  <button  style="background: #ffc107" class="btn btn-success" type="submit">Изменить пользователя</button>
+</form>
+<a  style="background: #ffc107" class="btn btn-success" th:href="'/admin/admins'">Назад</a>
+</body>
+</html>

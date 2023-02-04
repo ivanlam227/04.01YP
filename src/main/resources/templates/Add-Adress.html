@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+<body style="background: black">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<div th:insert="Blocks/Header"></div>
+</head>
+
+
+<form th:action="${'/newAdress'}" method="post" th:object="${avtosalon}">
+  <label style="color:#FFFFFF">Добавить адрес </label>
+  <input type="text" th:field="*{adress}" name="adress">
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"></div><br>
+  <br>
+  <button style="background: #ffc107; margin-bottom: 15px" type="submit" class="btn btn-del">Добавить</button>
+</form>
+</body>
+</html>

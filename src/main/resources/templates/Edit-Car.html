@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>пр2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background: black">
+<div th:insert="Blocks/Header"></div>
+<h1 style="color: white">Редактирование данных авто</h1>
+
+  <form  th:action = "@{/blog/Car/{id}/Edit(id=${car.id})}" method="post" th:object="${car}" >
+  <label style="color: white">Модель авто</label>
+  <input type="text" style="margin-bottom: 15px; background: #ffc107" th:field="*{marks}"  name="marks" th:value="${car.getMarks()}" placeholder="Модель авто"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('marks')}" th:errors="*{marks}"></div><br>
+
+  <label style="color: white">Цена</label>
+  <input type="text" style="margin-bottom: 15px;background: #ffc107"  th:fields="*{sale}" name="sale" th:value="${car.getSale()}" placeholder="Цена"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('sale')}" th:errors="*{sale}"></div><br>
+  <label style="color: white">номер двигателя</label>
+  <input type="number" style="margin-bottom: 15px;background: #ffc107"  maxlength="7" th:fields="*{numberengen}"  name="numberengen" th:value="${car.getNumberengen()}"placeholder="номер двигателя"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('numberengen')}" th:errors="*{numberengen}"></div><br>
+  <label style="color: white">Год выпуска</label>
+  <input type="date" style="margin-bottom: 15px;background: #ffc107"  th:fields="*{year}" name="year" th:value="${car.getYear()}" placeholder="Год выпуска"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div><br>
+  <label style="color: white">Цвет авто</label>
+  <input type="text" style="margin-bottom: 15px;background: #ffc107" th:fields="*{color}"  name="color" th:value="${car.getColor()}" placeholder="Цвет авто"><br>
+
+  <div style="color: white" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></div><br>
+    <label style="color: white">Комплектация</label>
+      <select name="compl">
+      <div th:each="element : ${complects}">
+        <option th:text="${element.compl}"></option>
+
+      </div>
+    </select>
+    </select>
+  <button style="background: #ffc107" type="submit"> Изменить данные автомобиля</button>
+</form>
+
+</body>
+</html>

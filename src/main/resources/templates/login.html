@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<body style="background: black">
+<div th:insert="Blocks/Header"></div>
+</head>
+
+<div style="color: white" th:if="${param.error}">
+Неверный логин или пароль
+</div>
+<div style="color: white" th:if="${param.logout}">
+</div>
+<h1 style="color:  white" align="center"> Вход</h1>
+<form th:action="@{/login}" method="post">
+    <div align="center"><label style="color: white"> Логин : <input  style="text-align: center; color: black; margin-bottom: 20px" size="25" type="text" name="username"/> </label></div>
+  <div align="center"><label style="color: white"> Пароль: <input  style="text-align: center;  color: black; margin-bottom: 20px" size="25" type="password" name="password"/> </label></div>
+  <div align="center"><input style="color: black; background: #ffc107; height: 30px;width: 150px" type ="submit" value="Вход"/></div>
+</form>
+<form th:action="@{/registration}" method="get">
+    <div align="center"><input style="color: black; background: #ffc107; height: 30px;width: 150px" type ="submit" value="Регистрация"/></div>
+</form>
+</body>
+</html>

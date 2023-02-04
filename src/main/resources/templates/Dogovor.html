@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Добавление нового договора</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: black">
+<div th:insert="Blocks/Header"></div>
+<h1 style="color: white">Договоры</h1>
+<body>
+<form th:action="${'/dogovor/add'}" method="post"  th:object = "${dogovor}">
+  <input maxlength="8" minlength="2" style="background: #ffc107" type="text" th:maxlength="8" th:minlength="2" th:field="*{number}" name="number" placeholder="Введите номер договора"/>
+  <div style="color: white" ></div><br>
+  <select style="background: #ffc107" name="carid">
+    <div th:each="element : ${car}">
+      <option th:text="${element.marks}" th:value=" ${element.id}"></option>
+    </div>
+  </select>
+  <select style="background: #ffc107" name="employerid">
+    <div th:each="element : ${employee}">
+      <option th:text="${element.lastname}" th:value=" ${element.id}"></option>
+    </div>
+  </select>
+  <select style="background: #ffc107"  name="clientid">
+    <div th:each="element : ${client}">
+      <option th:text="${element.lastnamec}" th:value="${element.id}"></option>
+    </div>
+  </select>
+  <br>
+
+  <button  style="background: #ffc107"  type="submit">Добавить договор</button>
+</form>
+<div th:each="el : ${dogovors}">
+  <h3 style="color: white">
+    <b> № договора -  </b> <span th:text="${el.number}"/>
+  </h3>
+  <p style="color: white"><b>Марка авто -   </b> <span th:text="${el.getCarss()?.getMarks()}"/></p>
+  <p style="color: white"><b> Имя сотрудника -  </b> <span th:text="${el.getEmployee()?.getLastname()}"/></p>
+  <p style="color: white"><b> Имя клиента -  </b> <span th:text="${el.getClient()?.getLastnamec()}"/></p>
+  <form th:action="'/Dogovor/' + ${el.id} + '/edit'" method="get">
+    <button class="btn btn-warning" type="submit" >Изменить</button>
+  </form>
+  <form th:action="'/Dogovor/' + ${el.id} + '/remove'" method="post">
+    <button class="btn btn-warning" type="submit" >Удалить</button>
+  </form>
+</div>
+</body>
+</body>
+</html>

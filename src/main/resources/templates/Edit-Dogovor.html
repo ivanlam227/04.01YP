@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Добавление нового договора</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: black">
+<div th:insert="Blocks/Header"></div>
+<h1 style="color: white">Редактирование данных договора</h1>
+<body>
+<form th:action = "@{/Dogovor/{id}/edit(id=${dogovor.id})}" method="post" style="text-align: center" th:object="${dogovor}">
+
+    <label> № Договора</label>
+    <input  style="text-align:  center;height: 30px;width: 300px; margin-bottom: 20px"
+            th:value="${dogovor.getNumber()}"   th:field="*{number}" type="number" maxlength="10" name="number"><br>
+    <div style="color: black" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div><br>
+
+
+    <label> Клиент:</label>
+    <select style="margin-bottom: 20px;height: 30px;width: 300px" client.getLastnamec() th:field="*{client}" name="lastnamec" >
+        <div th:each="el : ${client}">
+            <option th:value="${el.getId()}" th:text="${el.lastnamec}"></option>
+        </div>
+    </select><br>
+
+    <label> Марка авто:</label>
+    <select style="margin-bottom: 20px;height: 30px;width: 300px"  car.getMarks() th:field="*{carss}" name="marks" >
+        <div th:each="element : ${carss}">
+            <option  th:value="${element.getId()}" th:text="${element.marks}"></option>
+        </div>
+    </select><br>
+
+    <label> Сотрудник:</label>
+    <select style="margin-bottom: 20px;height: 30px;width: 300px" employee.getLastname th:field="*{employee}" name="lastname" >
+        <div th:each="element : ${employee}">
+            <option  th:value="${element.getId()}" th:text="${element.lastname}"></option>
+        </div>
+    </select><br>
+    <br>
+    <div style="color: white"></div><br>
+    <button style="background: #ffc107" type="submit">Изменить данные</button>
+</form>
+</form>
+</body>
+</body>
+</html>

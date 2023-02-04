@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>пр2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <div th:insert="Blocks/Header"></div>
+    <h1 style="color: white">Добавление  сотрудника</h1>
+<body style="background: black">
+</head>
+
+<form th:action = "${'/Add/Employee'}" method="post" th:object = "${employee}" >
+    <input style="background: #ffc107; margin-bottom: 15px" type="text"  th:fields="*{lastname}"  name="lastname" placeholder="Фамилия "><br>
+    <div style="color: white" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div><br>
+    <input style="background: #ffc107; margin-bottom: 15px" type="text"  th:fields="*{name}" name="name" placeholder="Имя "><br>
+    <div style="color: white" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+    <input style="background: #ffc107; margin-bottom: 15px" type="text" th:fields="*{middlename}" name="middlename" placeholder="Отчество "><br>
+    <div style="color: white" th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div><br>
+    <input style="background: #ffc107; margin-bottom: 15px" type="date"  th:fields="*{birthday}" name="birthday" placeholder="Дата рождения"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div><br>
+    <input style="background: #ffc107; margin-bottom: 15px" type="number" th:fields="*{expetienxs}" maxlength="2" name="expetienxs" placeholder="Стаж работы"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('expetienxs')}" th:errors="*{expetienxs}"></div><br>
+    <button style="background: #ffc107" type="submit"> Добавить Сотрудника</button>
+</form>
+</body>
+</html>

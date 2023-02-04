@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: black">
+<div th:insert="Blocks/Header"></div>
+<h1 style="color: white">Редактирование данных сотрудника</h1>
+
+<form method="post" th:action="@{/blog/Employee/{id}/Edit(id=${employee.id})}" th:object = "${employee}">
+<label style="color: white">Фамилия</label>
+  <input type="text"  style="margin-bottom: 15px; align-content: center;background: #ffc107" th:fields="*{lastname}"  th:value="${employee.getLastname()}" name="lastname" placeholder="Фамилия "><br>
+    <div style="color: white; align-content: center" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div><br>
+    <label style="color: white">Имя</label>
+  <input  type="text" style="margin-bottom: 15px;background: #ffc107"th:fields="*{name}"  th:value="${employee.getName()}" name="name" placeholder="Имя "><br>
+    <div style="color: white" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+    <label style="color: white">Отчество</label>
+    <input  type="text" style="margin-bottom: 15px;background: #ffc107" th:fields="*{middlename}" th:value="${employee.getMiddlename()}" name="middlename" placeholder="Отчество "><br>
+    <div style="color: white" th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div><br>
+    <label style="color: white">Дата рождения</label>
+    <input  type="date" style="margin-bottom: 15px;background: #ffc107" th:fields="*{birthday}" th:value="${employee.getBirthday()}" name="birthday" placeholder="Дата рождения"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div><br>
+    <label style="color: white">Стаж работы</label>
+    <input   type="number" style="margin-bottom: 15px;background: #ffc107"th:fields="*{expetienxs}" th:value="${employee.getExpetienxs()}" maxlength="2" name="expetienxs" placeholder="Стаж работы"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('expetienxs')}" th:errors="*{expetienxs}"></div><br>
+        <button style="background: #ffc107" type="submit">Изменить данные</button>
+    </form>
+
+
+
+
+</div>
+</body>
+</html>

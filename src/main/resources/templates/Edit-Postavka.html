@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: black">
+<div th:insert="Blocks/Header"></div>
+<h1 style="color: white">Редактирование данных поставки</h1>
+
+<form method="post" th:action="@{/blog/Postavka/{id}/Edit(id=${postavka.id})}" th:object = "${postavka}">
+  <label style="color: white">№ поставки</label>
+  <input style="background: #ffc107; margin-bottom: 15px" type="text"  th:fields="*{nomerP}" th:value="*{nomerP}"  name="nomerP" placeholder="Номер поставки"><br>
+  <div style="color: white" th:if="${#fields.hasErrors('nomerP')}" th:errors="*{nomerP}"></div><br>
+  <label style="color: white">Наименование авто</label>
+  <input style="background: #ffc107; margin-bottom: 15px" type="text"  th:fields="*{nameAvto}" th:value="*{nameAvto}" name="nameAvto" placeholder="Наименование авто "><br>
+  <div style="color: white" th:if="${#fields.hasErrors('nameAvto')}" th:errors="*{nameAvto}"></div><br>
+  <label style="color: white">Количество</label>
+  <input style="background: #ffc107; margin-bottom: 15px" type="number" th:value="*{col}"  th:fields="*{col}" name="col" placeholder="Количество "><br>
+  <div style="color: white" th:if="${#fields.hasErrors('col')}" th:errors="*{col}"></div><br>
+  <button style="background: #ffc107" type="submit">Изменить данные</button>
+</form>
+
+
+
+
+</div>
+</body>
+</html>

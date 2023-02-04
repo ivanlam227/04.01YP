@@ -1,0 +1,30 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <title>Добавление нового договора</title>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body style="background: black">-->
+<!--<div th:insert="Blocks/Header"></div>-->
+<!--<h1 style="color: white">Редактирование данных договора</h1>-->
+<!--<form th:action = "${'/Add/dogovor'}" method="get"  >-->
+<!--    <button style="color: #415159; size: 50px; border:#000000;-->
+<!--      background:#91B6C7;height: 30px;width: 300px;alignment: center;position: center;left: -80%;-->
+<!--      transform: translate(80%,0)" type="submit"> Добавить договор</button>-->
+<!--</form><br>-->
+
+<!--<div th:each="el : ${dogovor}" style="text-align: center">-->
+<!--<label style="text-align: center"> № Договора:</label>-->
+<!--<p style="text-align: center" th:text="${el.getNumber()}"></p>-->
+<!--<label style="text-align: center"> Клиент:</label>-->
+<!--<p style="text-align: center" th:text="${el.getClient()}"></p>-->
+<!--<label style="text-align: center"> Марка авто:</label>-->
+<!--<p style="text-align: center" th:text="${el.getCarss()}"></p>-->
+<!--<label style="text-align: center"> Сотрудник:</label>-->
+<!--<p style="text-align: center" th:text="${el.getEmployee()}"></p>-->
+<!--<label style="text-align: center"> Сотрудник:</label>-->
+<!--<a style="color: #415159; size: 50px; border:#000000; text-align: center" th:href="'/Dogovor/' + ${el.id}"> Информация о чеке </a>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

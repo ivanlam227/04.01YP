@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Добавление нового тестдрайва</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: black">
+<div th:insert="Blocks/Header"></div>
+<h1 style="color: white">Добавление тестдрайва</h1>
+<body>
+<form th:action="${'/testdrive/add'}" method="post">
+  <input style="background: #ffc107" type="date" name="data" placeholder="Введите дату тестдрайва">
+  <select style="background: #ffc107" name="marks">
+    <div th:each="element : ${car}">
+      <option th:text="${element.marks}"></option>
+    </div>
+  </select>
+  <select style="background: #ffc107"  name="name">
+    <div th:each="element : ${driver}">
+      <option th:text="${element.name}"></option>
+    </div>
+  </select>
+
+  <br>
+  <button  style="background: #ffc107"  type="submit">Добавить тестдрайв</button>
+</form>
+</body>
+
+  <div th:each="el : ${testdrive}">
+    <h3 style="color: white">
+      <b> Дата тестдрайва -  </b> <span th:text="${el.data}"/>
+    </h3>
+    <p style="color: white"><b>Марка авто -   </b> <span th:text="${el.getCar().getMarks()}"/></p>
+    <p style="color: white"><b> Имя водителя -  </b> <span th:text="${el.getDriver().getName()}"/></p>
+    <form  th:action="'/testdrive/' + ${el.id} + '/edit'">
+      <button class="btn btn-warning" type="submit">Изменить</button>
+    </form>
+    <form th:action="'/testdrive/' + ${el.id} + '/Remove'" method="post">
+      <button class="btn btn-warning" type="submit" >Удалить</button>
+    </form>
+  </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>пр2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<div th:insert="Blocks/Header"></div>
+<body style="background: black">
+
+<h1 style="color: white" клиенты/></h1>
+<table>
+  <tr>
+    <td>
+      <form  th:action="'/Search/Client'">
+        <button class="btn btn-warning" type="submit">Поиск клиента</button>
+      </form>
+    </td>
+    <td>
+      <form  th:action="'/Add/Client'">
+        <button class="btn btn-warning" type="submit">Добавить клиента</button>
+      </form>
+    </td>
+  </tr>
+</table>
+
+<div th:each="el : ${client}">
+  <h3 style="color: white"><b> Фамилия -  </b> <span th:text="${el.getLastnamec()}" /></h3>
+  <p style="color: white"><b>Имя -   </b> <span th:text="${el.getNamec()}"/></p>
+  <p style="color: white"><b> Отчество -  </b> <span th:text="${el.getMiddlenamec()}"/></p>
+  <p style="color: white"><b> Серия паспорта - </b> <span th:text="${el.getSeria()}"/></p>
+  <p style="color: white"><b> Номер паспорта - </b> <span th:text="${el.getNomer()}"/></p>
+
+  <form  th:action="'/blog/Client/' + ${el.id} + '/Edit'">
+    <button class="btn btn-warning" type="submit">Изменить</button>
+  </form>
+  <form th:action="'/blog/Client/' + ${el.id} + '/Remove'" method="post">
+    <button class="btn btn-warning" type="submit" >Удалить</button>
+  </form>
+</div>
+</body>
+</html>

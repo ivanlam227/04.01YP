@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <body style="background: black">
+    <div th:insert="Blocks/Header"></div>
+</head>
+
+<div style="color: white" th:if="${#messages}">
+  <p style="color: white" th:text="${message}"></p>
+</div>
+<h1 style="color:  white" align="center"> Регистрация нового пользователя</h1>
+<form th:action="@{/registration}" method="post">
+  <div align="center"> <label style="color: white" align="center" ><br>  Логин : <input type="text" style="text-align: center; color: black; margin-bottom: 20px" size="25" name="username"/> </label> </div>
+  <div align="center"> <label style="color: white" align="center"><br> Пароль: <input type="password" style="text-align: center; color: black; margin-bottom: 20px" size="25"  name="password"/> </label></div>
+  <div align="center"><input align="center"  type="submit" style="color: black; background: #ffc107;  wheight: 30px;width: 180px" value="Зарегистрироваться"/></div>
+</form>
+</body>
+</html>
